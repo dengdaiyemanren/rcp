@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="com.qualityeclipse.nofavorites"
+            id="com.qualityeclipse.nofavorites">
+      </category>
+      <view
+            name="NoFavorites"
+            icon="icons/sample.gif"
+            category="com.qualityeclipse.nofavorites"
+            class="com.qualityeclipse.nofavorites.views.NoFavoritesView"
+            id="com.qualityeclipse.nofavorites.views.NoFavoritesView">
+      </view>
+      <view
+            category="com.qualityeclipse.nofavorites"
+            class="com.qualityeclipse.nofavorites.views.NewView"
+            icon="icons/sample.gif"
+            id="com.qualityeclipse.nofavorites.views.NewView"
+            name="NewViewName">
+      </view>
+      <category
+            id="com.qualityeclipse.nofavorites1"
+            name="Sample Category1">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="com.qualityeclipse.nofavorites.views.NoFavoritesView">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="com.qualityeclipse.nofavorites.views.NewView"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               id="com.qualityeclipse.nofavorites.views.SampleView1"
+               ratio="0.5"
+               relationship="right"
+               relative="org.eclipse.ui.views.ProblemView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

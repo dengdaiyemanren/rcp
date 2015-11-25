@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Nofavorites
+Bundle-SymbolicName: com.qualityeclipse.nofavorites;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.qualityeclipse.nofavorites.Activator
+Bundle-Vendor: QUALITYECLIPSE
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Export-Package: com.qualityeclipse.nofavorites.views
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy

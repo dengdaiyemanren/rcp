@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="QualityEclipse"
+            id="com.qualityeclipse.favorites">
+      </category>
+      <view
+            name="Favorites"
+            icon="icons/sample.gif"
+            category="com.qualityeclipse.favorites"
+            class="com.qualityeclipse.favorites.views.FavoritesView"
+            id="com.qualityeclipse.favorites.views.FavoritesView">
+      </view>
+   </extension>
+
+</plugin>

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Test
+Bundle-SymbolicName: com.qualityeclipse.nofavorites.test
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.qualityeclipse.nofavorites.test.Activator
+Bundle-Vendor: QUALITYECLIPSE
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.junit;bundle-version="4.11.0",
+ com.qualityeclipse.nofavorites;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
