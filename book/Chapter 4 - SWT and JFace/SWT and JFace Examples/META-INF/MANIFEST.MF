@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: SWT and JFace Examples Plug-in
+Bundle-SymbolicName: SWT_and_JFace_Examples
+Bundle-Version: 1.0.0
+Bundle-Vendor: QualityEclipse
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.swt,
+ org.eclipse.jface,
+ org.eclipse.jface.text,
+ org.eclipse.equinox.common
