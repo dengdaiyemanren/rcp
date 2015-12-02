@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="QualityEclipse"
+            id="com.qualityeclipse.favorites">
+      </category>
+      <view
+            name="Favorites"
+            icon="icons/sample.gif"
+            category="com.qualityeclipse.favorites"
+            class="com.qualityeclipse.favorites.views.FavoritesView"
+            id="com.qualityeclipse.favorites.views.FavoritesView">
+      </view>
+      <view
+            class="org.eclipse.ui.navigator.CommonNavigator"
+            icon="icons/sample.gif"
+            id="com.example.test"
+            name="My Common Navigator">
+      </view>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <category
+            description="Commands related to the Favorites View"
+            id="com.qualityeclipse.favorites.commands.category"
+            name="Favorites">
+      </category>
+      <command
+            categoryId="com.qualityeclipse.favorites.commands.category"
+            description="Open the Favorites view if it is not already visible"
+            id="com.qualityeclipse.favorites.commands.openView"
+            name="Open Favorites View">
+      </command>
+      <command
+            categoryId="com.qualityeclipse.favorites.commands.category"
+            description="Add selected items to the Favorites view"
+            id="com.qualityeclipse.favorites.commands.add"
+            name="Add">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="com.qualityeclipse.favorites.menus.favoritesMenu"
+               label="Favorites"
+               mnemonic="v">
+            <command
+                  commandId="com.qualityeclipse.favorites.commands.openView"
+                  icon="icons/sample.gif"
+                  id="com.qualityeclipse.favorites.menus.openFavoritesView"
+                  mnemonic="O">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeContexts">
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <equals
+                              value="com.qualityeclipse.favorites.workbenchActionSet">
+                        </equals>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.qualityeclipse.favorites.toolbars.main">
+            <command
+                  commandId="com.qualityeclipse.favorites.commands.openView"
+                  icon="icons/sample.gif"
+                  id="com.qualityeclipse.favorites.toolbars.openFavoritesView"
+                  tooltip="Open the Favorites view">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeContexts">
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <equals
+                              value="com.qualityeclipse.favorites.workbenchActionSet">
+                        </equals>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               label="Favorites">
+            <command
+                  commandId="com.qualityeclipse.favorites.commands.add"
+                  icon="icons/sample.gif"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <iterate
+                           ifEmpty="false"
+                           operator="or">
+                        <and>
+                           <or>
+                              <instanceof
+                                    value="org.eclipse.core.resources.IResource">
+                              </instanceof>
+                              <instanceof
+                                    value="org.eclipse.jdt.core.IJavaElement">
+                              </instanceof>
+                           </or>
+                           <test
+                                 property="com.qualityeclipse.favorites.notFavorite">
+                           </test>
+                        </and>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.views.ProblemView?after=additions">
+         <command
+               commandId="com.qualityeclipse.favorites.commands.openView"
+               icon="icons/sample.gif"
+               tooltip="Open the Favorites view">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.views.ProblemView?after=additions">
+         <command
+               commandId="com.qualityeclipse.favorites.commands.openView"
+               icon="icons/sample.gif"
+               tooltip="Open the Favorites view">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.views.ProblemView?after=additions">
+         <command
+               commandId="com.qualityeclipse.favorites.commands.openView"
+               icon="icons/sample.gif"
+               tooltip="Open the Favorites view">
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:window?after=additions">
+         <command
+               commandId="com.qualityeclipse.favorites.commands.openView"
+               icon="icons/sample.gif"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activeEditorId">
+                  <equals
+                        value="org.eclipse.ui.DefaultTextEditor">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.handlers">
+      <handler class="com.qualityeclipse.favorites.handlers.OpenFavoritesViewHandler"
+               commandId="com.qualityeclipse.favorites.commands.openView">
+      </handler>
+      <handler
+            class="com.qualityeclipse.favorites.handlers.AddToFavoritesHandler"
+            commandId="com.qualityeclipse.favorites.commands.add">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.qualityeclipse.favorites.workbenchActionSet"
+            label="Favorites ActionSet"
+            visible="true">
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="com.qualityeclipse.favorites.propertyTester.FavoritesTester"
+            id="com.qualityeclipse.favorites.propertyTester"
+            namespace="com.qualityeclipse.favorites"
+            properties="isFavorite, notFavorite"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.qualityeclipse.favorites.commands.add"
+            contextId="org.eclipse.ui.textEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Ctrl+Shift+A">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+   </extension>
+   
+
+</plugin>
