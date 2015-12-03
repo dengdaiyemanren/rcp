@@ -72,127 +72,24 @@
          </menu>
       </menuContribution>
       <menuContribution
+            allPopups="false"
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar
-               id="com.qualityeclipse.favorites.toolbars.main">
+         <menu
+               label="ToolbarMenu"
+               mnemonic="v">
             <command
                   commandId="com.qualityeclipse.favorites.commands.openView"
                   icon="icons/sample.gif"
-                  id="com.qualityeclipse.favorites.toolbars.openFavoritesView"
-                  tooltip="Open the Favorites view">
-               <visibleWhen
-                     checkEnabled="false">
-                  <with
-                        variable="activeContexts">
-                     <iterate
-                           ifEmpty="false"
-                           operator="or">
-                        <equals
-                              value="com.qualityeclipse.favorites.workbenchActionSet">
-                        </equals>
-                     </iterate>
-                  </with>
-               </visibleWhen>
-            </command>
-         </toolbar>
-      </menuContribution>
-      <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-         <menu
-               label="Favorites">
-            <command
-                  commandId="com.qualityeclipse.favorites.commands.add"
-                  icon="icons/sample.gif"
+                  id="com.qualityeclipse.favorites.menus.openFavoritesViewTest"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
                   <with
-                        variable="selection">
-                     <iterate
-                           ifEmpty="false"
-                           operator="or">
-                        <and>
-                           <or>
-                              <instanceof
-                                    value="org.eclipse.core.resources.IResource">
-                              </instanceof>
-                              <instanceof
-                                    value="org.eclipse.jdt.core.IJavaElement">
-                              </instanceof>
-                           </or>
-                        </and>
-                     </iterate>
+                        variable="activeContexts">
                   </with>
                </visibleWhen>
             </command>
          </menu>
-      </menuContribution>
-      <menuContribution
-            locationURI="menu:org.eclipse.ui.views.ProblemView?after=additions">
-         <command
-               commandId="com.qualityeclipse.favorites.commands.openView"
-               icon="icons/sample.gif"
-               tooltip="Open the Favorites view">
-         </command>
-      </menuContribution>
-      <menuContribution
-            locationURI="toolbar:org.eclipse.ui.views.ProblemView?after=additions">
-         <command
-               commandId="com.qualityeclipse.favorites.commands.openView"
-               icon="icons/sample.gif"
-               tooltip="Open the Favorites view">
-         </command>
-      </menuContribution>
-      <menuContribution
-            locationURI="popup:org.eclipse.ui.views.ProblemView?after=additions">
-         <command
-               commandId="com.qualityeclipse.favorites.commands.openView"
-               icon="icons/sample.gif"
-               tooltip="Open the Favorites view">
-         </command>
-      </menuContribution>
-      <menuContribution
-            locationURI="menu:window?after=additions">
-         <command
-               commandId="com.qualityeclipse.favorites.commands.openView"
-               icon="icons/sample.gif"
-               style="push">
-            <visibleWhen
-                  checkEnabled="false">
-               <with
-                     variable="activeEditorId">
-                  <equals
-                        value="org.eclipse.ui.DefaultTextEditor">
-                  </equals>
-               </with>
-            </visibleWhen>
-         </command>
-      </menuContribution>
-      <menuContribution
-            allPopups="false"
-            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
-         <toolbar
-               id="com.qualityeclipse.favorites.toolbar1">
-            <command
-                  commandId="com.qualityeclipse.favorites.commands.openView"
-                  icon="icons/sample.gif"
-                  style="push"
-                  tooltip="Open the Favorites view Test">
-               <visibleWhen
-                     checkEnabled="false">
-                  <with
-                        variable="com.qualityeclipse.favorites.with2">
-                     <iterate
-                           ifEmpty="false"
-                           operator="or">
-                        <equals
-                              value="com.qualityeclipse.favorites.equals1">
-                        </equals>
-                     </iterate>
-                  </with>
-               </visibleWhen>
-            </command>
-         </toolbar>
       </menuContribution>
    </extension>
    <extension point="org.eclipse.ui.handlers">
@@ -230,6 +127,9 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="Ctrl+Shift+A">
       </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
    </extension>
    
 

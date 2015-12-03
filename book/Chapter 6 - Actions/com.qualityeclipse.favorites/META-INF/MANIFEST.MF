@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Favorites Plug-in
+Bundle-SymbolicName: com.qualityeclipse.favorites; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-ClassPath: favorites.jar
+Bundle-Activator: com.qualityeclipse.favorites.FavoritesPlugin
+Bundle-Vendor: Quality Eclipse
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Eclipse-LazyStart: true
+Export-Package: com.qualityeclipse.favorites.actions,
+ com.qualityeclipse.favorites.views

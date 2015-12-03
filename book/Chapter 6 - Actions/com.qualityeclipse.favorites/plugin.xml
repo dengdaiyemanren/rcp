@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Quality Eclipse"
+            id="com.qualityeclipse.favorites">
+      </category>
+      <view
+            name="Favorites"
+            icon="icons/sample.gif"
+            category="com.qualityeclipse.favorites"
+            class="com.qualityeclipse.favorites.views.FavoritesView"
+            id="com.qualityeclipse.favorites.views.FavoritesView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.qualityeclipse.favorites.workbenchActionSet"
+            label="Favorites ActionSet"
+            visible="true">
+         <menu
+               id="com.qualityeclipse.favorites.workbenchMenu"
+               label="Fa&amp;vorites"
+               path="additions">
+            <groupMarker name="content"/>
+            <separator name="additions"/>
+         </menu>
+         <action
+               class="com.qualityeclipse.favorites.actions.OpenFavoritesViewActionDelegate"
+               icon="icons/sample.gif"
+               id="com.qualityeclipse.favorites.openFavoritesView"
+               label="Open Favo&amp;rites View"
+               menubarPath="com.qualityeclipse.favorites.workbenchMenu/content"
+               style="push"
+               toolbarPath="Normal/additions"
+               tooltip="Open the favorites view in the current workbench page"/>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="com.qualityeclipse.favorites.popupMenu"
+            objectClass="org.eclipse.core.resources.IResource">
+         <action
+               class="com.qualityeclipse.favorites.actions.AddToFavoritesActionDelegate"
+               enablesFor="+"
+               icon="icons/sample.gif"
+               id="com.qualityeclipse.favorites.addToFavorites"
+               label="Add"
+               menubarPath="com.qualityeclipse.favorites.popupSubMenu/content"
+               tooltip="Add the selected resource(s) to the Favorites view"/>
+         <menu
+               id="com.qualityeclipse.favorites.popupSubMenu"
+               label="Favorites"
+               path="additions">
+            <groupMarker name="content"/>
+            <separator name="additions"/>
+         </menu>
+      </objectContribution>
+      <viewerContribution
+            id="com.qualityeclipse.favorites.membersViewPopup"
+            targetID="org.eclipse.jdt.ui.MembersView">
+         <menu
+               id="com.qualityeclipse.favorites.membersViewPopupSubMenu"
+               label="Favorites"
+               path="additions">
+            <groupMarker name="content"/>
+            <separator name="additions"/>
+         </menu>
+         <action
+               class="com.qualityeclipse.favorites.actions.AddToFavoritesActionDelegate"
+               id="com.qualityeclipse.favorites.addToFavoritesInMembersView"
+               label="Add"
+               menubarPath="com.qualityeclipse.favorites.membersViewPopupSubMenu/content"
+               tooltip="Add selected member’s compilation unit to the Favorites view"/>
+      </viewerContribution>
+      <viewerContribution
+            id="com.qualityeclipse.favorites.compilationUnitEditorPopup"
+            targetID="#CompilationUnitEditorContext">
+         <menu
+               id="com.qualityeclipse.favorites.compilationUnitEditorPopupSubMenu"
+               label="Favorites"
+               path="additions">
+            <groupMarker name="content"/>
+            <separator name="additions"/>
+         </menu>
+         <action
+               class="com.qualityeclipse.favorites.actions.AddToFavoritesActionDelegate"
+               id="com.qualityeclipse.favorites.addToFavoritesInCompilationUnitEditor"
+               label="Add"
+               menubarPath="com.qualityeclipse.favorites.compilationUnitEditorPopupSubMenu/content"/>
+      </viewerContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.viewActions">
+      <viewContribution
+            id="com.qualityeclipse.favorites.membersViewActions"
+            targetID="org.eclipse.jdt.ui.MembersView">
+         <menu
+               id="com.qualityeclipse.favorites.membersViewPulldownSubMenu"
+               label="Favorites"
+               path="additions">
+            <groupMarker name="content"/>
+            <separator name="additions"/>
+         </menu>
+         <action
+               class="com.qualityeclipse.favorites.actions.AddToFavoritesActionDelegate"
+               icon="icons/sample.gif"
+               id="com.qualityeclipse.favorites.addToFavoritesInMembersView"
+               label="Add"
+               menubarPath="com.qualityeclipse.favorites.membersViewPulldownSubMenu/content"
+               style="push"
+               toolbarPath="additions"
+               tooltip="Add the selected items in the Members view to the Favorites view"/>
+      </viewContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editorActions">
+      <editorContribution
+            id="com.qualityeclipse.favorites.compilationUnitEditorActions"
+            targetID="org.eclipse.jdt.ui.CompilationUnitEditor">
+         <menu
+               id="com.qualityeclipse.favorites.compilationUnitEditorPopupSubMenu"
+               label="Favorites"
+               path="additions">
+            <groupMarker name="content"/>
+            <separator name="additions"/>
+         </menu>
+         <action
+               id="com.qualityeclipse.favorites.addToFavoritesInCompilationUnitEditor"
+               label="Add"
+               icon="icons/sample.gif"
+               menubarPath="com.qualityeclipse.favorites.compilationUnitEditorPopupSubMenu/content"
+               style="push"
+               toolbarPath="Normal/additions"
+               tooltip="Add the editor selection to the Favorites view"
+               class="com.qualityeclipse.favorites.actions.AddToFavoritesActionDelegate"
+               definitionId="com.qualityeclipse.favorites.commands.addToFavoritesView"/>
+      </editorContribution>
+   </extension>
+   <extension point="org.eclipse.ui.commands">
+      <category
+            id="com.qualityeclipse.favorites.commands"
+            name="Favorites"
+            description="Favorites Commands"/>
+      <command
+            categoryId="com.qualityeclipse.favorites.commands"
+            id="com.qualityeclipse.favorites.commands.addToFavoritesView"
+            name="Add to Favorites View"
+            description="Add the selection to the Favorites"/>
+   </extension>
+   <extension point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.qualityeclipse.favorites.commands.addToFavoritesView"
+            contextId="org.eclipse.ui.textEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Ctrl+Shift+A"/>
+   </extension>
+
+</plugin>
