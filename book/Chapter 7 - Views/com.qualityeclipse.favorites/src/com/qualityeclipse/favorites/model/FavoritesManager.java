@@ -115,7 +115,11 @@ public class FavoritesManager
       Iterator<IFavoriteItem> iter = favorites.iterator();
       while (iter.hasNext()) {
          IFavoriteItem item = iter.next();
+<<<<<<< HEAD
         if (item.isFavoriteFor(obj))
+=======
+         if (item.isFavoriteFor(obj))
+>>>>>>> 70accaa962ff140280be1ed3cbbf7f93d334fcec
             return item;
       }
       return null;
