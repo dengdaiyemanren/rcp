@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Favorites Plug-in
+Bundle-SymbolicName: com.qualityeclipse.favorites; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Activator: com.qualityeclipse.favorites.FavoritesActivator
+Bundle-Vendor: QualityEclipse
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.core.expressions,
+ org.eclipse.jdt.core,
+ org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.jdt.ui,
+ org.eclipse.ui.workbench.texteditor,
+ org.eclipse.ui.editors,
+ org.eclipse.text
+Bundle-ActivationPolicy: lazy
+Export-Package: com.qualityeclipse.favorites.handlers,
+ com.qualityeclipse.favorites.model,
+ com.qualityeclipse.favorites.views
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
